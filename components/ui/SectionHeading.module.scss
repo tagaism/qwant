@@ -1,0 +1,18 @@
+@use "../../styles/mixins" as *;
+
+.heading {
+  h2 {
+    @include heading-en;
+  }
+
+  p {
+    @include heading-ja;
+  }
+}
+
+.light {
+  h2,
+  p {
+    color: #fff;
+  }
+}

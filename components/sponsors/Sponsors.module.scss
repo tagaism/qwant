@@ -1,0 +1,105 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.section {
+  position: relative;
+  padding: clamp(24px, 4vw, 64px) 0 clamp(56px, 7vw, 100px);
+}
+
+.head {
+  padding: 0 $gutter 12px;
+}
+
+.marquee {
+  position: relative;
+}
+
+.pause {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+
+  &:focus-visible {
+    position: absolute;
+    top: -48px;
+    right: $gutter;
+    z-index: 2;
+    width: auto;
+    height: auto;
+    padding: 8px 16px;
+    overflow: visible;
+    clip: auto;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    background: #fff;
+    color: $color-text;
+  }
+}
+
+.window {
+  overflow: hidden;
+  padding: 14px 0;
+}
+
+.track {
+  display: flex;
+  gap: 22px;
+  width: max-content;
+  animation: marquee 48s linear infinite;
+}
+
+.offset .track {
+  animation-name: marquee-offset;
+}
+
+.logoCard {
+  display: grid;
+  flex: 0 0 clamp(180px, 18vw, 280px);
+  place-items: center;
+  height: clamp(78px, 8vw, 112px);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: $shadow-logo;
+  color: $color-logo-mark;
+  font-size: clamp(16px, 1.3vw, 22px);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+}
+
+.marquee[data-paused="true"] .track,
+.marquee:hover .track,
+.marquee:focus-within .track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-offset {
+  from {
+    transform: translateX(-10vw);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 10vw));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+
+  .window {
+    overflow-x: auto;
+  }
+}

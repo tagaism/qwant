@@ -1,0 +1,57 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.section {
+  padding: clamp(56px, 7vw, 120px) $gutter clamp(28px, 4vw, 72px);
+}
+
+.card {
+  display: grid;
+  grid-template-columns: minmax(200px, 0.82fr) minmax(260px, 1.18fr);
+  gap: clamp(28px, 4vw, 72px);
+  padding: clamp(40px, 4.8vw, 88px) clamp(28px, 4vw, 76px) clamp(64px, 7vw, 120px);
+  border-radius: clamp(24px, 2.4vw, 48px);
+  background: #fff;
+  box-shadow: $shadow-card;
+}
+
+.body {
+  max-width: 38rem;
+  font-size: clamp(13px, 0.92vw, 16px);
+  line-height: 2.15;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: clamp(32px, 4vw, 56px);
+}
+
+@include below($bp-stack) {
+  .card {
+    grid-template-columns: 1fr;
+    padding-bottom: 48px;
+  }
+
+  .actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card {
+    animation: rise 0.9s ease both;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

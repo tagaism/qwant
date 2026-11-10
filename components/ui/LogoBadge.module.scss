@@ -1,0 +1,32 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+}
+
+.header {
+  width: clamp(92px, 9vw, 168px);
+  height: clamp(36px, 3.4vw, 64px);
+  background: $color-logo-header;
+  color: #fff;
+  font-size: clamp(12px, 0.9vw, 16px);
+
+  @include focus-ring(#fff);
+}
+
+.footer {
+  width: clamp(108px, 10vw, 180px);
+  height: clamp(40px, 3.6vw, 68px);
+  background: $color-logo-footer;
+  color: #3a3a3a;
+  font-size: clamp(13px, 1vw, 16px);
+
+  @include focus-ring(#fff);
+}
