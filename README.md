@@ -1,0 +1,2 @@
+# qwant
+nextjs work arounds
