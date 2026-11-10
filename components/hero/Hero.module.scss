@@ -1,0 +1,87 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(420px, 50vw, 1040px);
+  overflow: hidden;
+  background: $color-hero;
+  color: #fff;
+  text-align: center;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.veil {
+  position: absolute;
+  inset: 0;
+  background: rgba(208, 208, 208, 0.62);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 48px 20px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(40px, 4.4vw, 92px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.copy {
+  margin-top: clamp(28px, 4.2vw, 80px);
+  font-size: clamp(13px, 1.05vw, 18px);
+  font-weight: 500;
+  line-height: 1.95;
+}
+
+@include below($bp-phone) {
+  .break {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .photo {
+    animation: drift 28s ease-in-out infinite alternate;
+  }
+
+  .content {
+    animation: rise 0.9s ease both;
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

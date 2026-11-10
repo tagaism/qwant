@@ -1,0 +1,31 @@
+@use "./variables" as *;
+
+@mixin below($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin focus-ring($color: $color-text) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 3px;
+  }
+}
+
+@mixin heading-en {
+  margin: 0;
+  color: $color-text;
+  font-size: clamp(36px, 3.5vw, 68px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+@mixin heading-ja {
+  margin: 0.35em 0 0;
+  color: $color-text;
+  font-size: clamp(16px, 1.25vw, 24px);
+  font-weight: 700;
+  line-height: 1.4;
+}
